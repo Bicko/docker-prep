@@ -7,12 +7,13 @@
     - name: Install nginx
       apt:
         name: nginx
-        state: latest
-    - name: Start nginx
-      service:
-        name: nginx
-        state: started
-        enabled: yes
+        #state: latest
+        state: absent
+#    - name: Start nginx
+#      service:
+#        name: nginx
+#        state: started
+#        enabled: yes
 
     - name: Create Nginx logs subdirectory
       file:
