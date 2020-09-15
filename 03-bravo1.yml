@@ -27,26 +27,26 @@
         - /var/www/docker/{{ domain_name }}/html
         - /var/www/docker/{{ domain_name }}/logs
         
-    - name: Get index.php for bravo1.bicko.tech
+    - name: Get index.php for {{ domain_name }}
       get_url:
-        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.php
-        dest: /var/www/docker/bravo1.bicko.tech/html/index.php
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.php
+        dest: /var/www/docker/{{ domain_name }}/html/index.php
         mode: '0644'
         owner: mike
         group: mandj
         
-    - name: Get docker-compose.yml for bravo1.bicko.tech
+    - name: Get docker-compose.yml for {{ domain_name }}
       get_url:
-        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.yml
-        dest: /var/www/docker/bravo1.bicko.tech/docker-compose.yml
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.yml
+        dest: /var/www/docker/{{ domain_name }}/docker-compose.yml
         mode: '0644'
         owner: mike
         group: mandj
 
     - name: Create sites-enabled symlink
       file:
-        src: /etc/nginx/sites-available/bravo1.bicko.tech
-        dest: /etc/nginx/sites-enabled/bravo1.bicko.tech
+        src: /etc/nginx/sites-available/{{ domain_name }}
+        dest: /etc/nginx/sites-enabled/{{ domain_name }}
         owner: root
         group: root
         state: link
