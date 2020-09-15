@@ -8,12 +8,7 @@
       apt:
         name: nginx
         state: latest
-    - name: Start nginx
-      service:
-        name: nginx
-        state: started
-        enabled: yes
-        
+     
     - name: Unlink default Nginx conf
       file:
         state: absent
@@ -27,3 +22,8 @@
         owner: root
         group: root
 
+    - name: Start nginx
+      service:
+        name: nginx
+        state: reloaded
+        enabled: yes
