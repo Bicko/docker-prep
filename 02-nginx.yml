@@ -22,7 +22,15 @@
         owner: root
         group: root
 
-    - name: Start / Reload Nginx
+    - name: Create subdirectory for containers
+      file:
+        path: /var/www/docker
+        state: directory
+        mode: '0755'
+        owner: mike
+        group: mandj
+
+- name: Start / Reload Nginx
       service:
         name: nginx
         state: reloaded
