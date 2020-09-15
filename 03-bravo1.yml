@@ -25,7 +25,7 @@
         - /var/www/docker/bravo1.bicko.tech/html
         - /var/www/docker/bravo1.bicko.tech/logs
         
-    - name: Get index.php for clever.bicko.tech
+    - name: Get index.php for bravo1.bicko.tech
       get_url:
         url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.php
         dest: /var/www/docker/bravo1.bicko.tech/html/index.php
