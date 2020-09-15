@@ -2,17 +2,19 @@
 - hosts: localhost
   connection: local
   become: yes
+  vars:
+    domain_name: bravo1.bicko.tech
   
   tasks:
-    - name: Fetch Nginx reverse proxy config file for bravo1.bicko.tech
+    - name: Fetch Nginx reverse proxy config file for {{ domain_name }}
       get_url:
-        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.nginx
-        dest: /etc/nginx/sites-available/bravo1.bicko.tech
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.nginx
+        dest: /etc/nginx/sites-available/{{ domain_name }}
         mode: '0644'
         owner: root
         group: root
 
-    - name: Create directories for bravo1.bicko.tech
+    - name: Create directories for {{ domain_name }}
       file:
         path: "{{ item }}"
         state: directory
@@ -20,10 +22,10 @@
         owner: mike
         group: mandj
       loop:
-        - /var/www/reverse-proxy/bravo1.bicko.tech
-        - /var/www/docker/bravo1.bicko.tech
-        - /var/www/docker/bravo1.bicko.tech/html
-        - /var/www/docker/bravo1.bicko.tech/logs
+        - /var/www/reverse-proxy/{{ domain_name }}
+        - /var/www/docker/{{ domain_name }}
+        - /var/www/docker/{{ domain_name }}/html
+        - /var/www/docker/{{ domain_name }}/logs
         
     - name: Get index.php for bravo1.bicko.tech
       get_url:
