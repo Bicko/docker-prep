@@ -1,0 +1,41 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  
+  tasks:
+    - name: Fetch Nginx reverse proxy config file for bravo1.bicko.tech
+      get_url:
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.nginx
+        dest: /etc/nginx/sites-available/bravo1.bicko.tech
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: Create directories for clever.bicko.tech
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+        owner: mike
+        group: mandj
+      loop:
+        - /var/www/docker/bravo1.bicko.tech
+        - /var/www/docker/bravo1.bicko.tech/html
+        - /var/www/docker/bravo1.bicko.tech/logs
+        
+    - name: Get index.php for clever.bicko.tech
+      get_url:
+        url: https://raw.githubusercontent.com/Bicko/vps-provisioning/master/bravo1.bicko.tech.php
+        dest: /var/www/docker/bravo1.bicko.tech/html/index.php
+        mode: '0644'
+        owner: mike
+        group: mandj
+        
+    - name: Get docker-compose.yml for bravo1.bicko.tech
+      get_url:
+        url: https://raw.githubusercontent.com/Bicko/vps-provisioning/master/bravo1.bicko.tech.yml
+        dest: /var/www/docker/bravo1.bicko.tech/docker-compose.yml
+        mode: '0644'
+        owner: mike
+        group: mandj
