@@ -22,7 +22,7 @@
         owner: root
         group: root
 
-    - name: Start nginx
+    - name: Start / Reload Nginx
       service:
         name: nginx
         state: reloaded
