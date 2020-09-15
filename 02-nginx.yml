@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create Nginx logs subdirectory
+      file:
+        path: /var/www/reverse-proxy
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
