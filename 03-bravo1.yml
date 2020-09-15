@@ -27,7 +27,7 @@
         
     - name: Get index.php for clever.bicko.tech
       get_url:
-        url: https://raw.githubusercontent.com/Bicko/vps-provisioning/master/bravo1.bicko.tech.php
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.php
         dest: /var/www/docker/bravo1.bicko.tech/html/index.php
         mode: '0644'
         owner: mike
@@ -35,7 +35,7 @@
         
     - name: Get docker-compose.yml for bravo1.bicko.tech
       get_url:
-        url: https://raw.githubusercontent.com/Bicko/vps-provisioning/master/bravo1.bicko.tech.yml
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/bravo1.bicko.tech.yml
         dest: /var/www/docker/bravo1.bicko.tech/docker-compose.yml
         mode: '0644'
         owner: mike
