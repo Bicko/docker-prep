@@ -1,0 +1,17 @@
+server {
+        listen 80;
+        listen [::]:80;
+
+        access_log /var/www/reverse-proxy/bravo2.bicko.tech/access.log;
+        error_log  /var/www/reverse-proxy/bravo2.bicko.tech/error.log;
+
+        server_name bravo2.bicko.tech www.bravo2.bicko.tech;
+        location / {
+                proxy_pass http://localhost:8102;
+                proxy_set_header Accept-Encoding "";
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+}
