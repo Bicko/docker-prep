@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    container_name: bravo2.bicko.tech
+    image: php:apache
+    ports:
+      - "8102:80"
+      - "8202:443"
+    restart: unless-stopped
+    volumes:
+      - /var/www/docker/bravo2.bicko.tech/html/:/var/www/html/
+      - /var/www/docker/bravo2.bicko.tech/logs/:/var/log/apache2/
