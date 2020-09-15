@@ -30,7 +30,7 @@
         owner: mike
         group: mandj
 
-- name: Start / Reload Nginx
+    - name: Start / Reload Nginx
       service:
         name: nginx
         state: reloaded
