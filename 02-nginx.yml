@@ -13,6 +13,11 @@
         name: nginx
         state: started
         enabled: yes
+        
+    - name: Unlink default Nginx conf
+      file:
+        state: absent
+        path: /etc/nginx/sites-enabled/default
 
     - name: Create Nginx logs subdirectory
       file:
