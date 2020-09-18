@@ -19,4 +19,4 @@ test ! -d docker-prep && git clone https://github.com/Bicko/docker-prep.git
 #Get latest yaml, etc
 cd docker-prep && git pull
 
-ansible-playbook ~/docker-prep/02-nginx.yml
+ansible-playbook ~/docker-prep/02-proxy.yml
