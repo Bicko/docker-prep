@@ -28,13 +28,13 @@
         - /var/www/docker/{{ domain_name }}/logs
         - /var/www/docker/{{ domain_name }}/db
         
-    - name: Get index.php for {{ domain_name }}
-      get_url:
-        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.php
-        dest: /var/www/docker/{{ domain_name }}/html/index.php
-        mode: '0644'
-        owner: mike
-        group: mandj
+#    - name: Get index.php for {{ domain_name }}
+#      get_url:
+#        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.php
+#        dest: /var/www/docker/{{ domain_name }}/html/index.php
+#        mode: '0644'
+#        owner: mike
+#        group: mandj
         
     - name: Get docker-compose.yml for {{ domain_name }}
       get_url:
