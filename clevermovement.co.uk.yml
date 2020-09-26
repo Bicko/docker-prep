@@ -1,0 +1,25 @@
+version: '3'
+services:
+  WP_clevermovement:
+    container_name: clevermovement_wordpress
+    image: wordpress:php7.4-apache
+    depends_on:
+      - DB_clevermovement
+    restart: unless-stopped
+    volumes:
+      - /var/www/docker/clevermovement.co.uk/html/:/var/www/html/
+      - /var/www/docker/clevermovement.co.uk/logs/:/var/log/apache2/
+    ports:
+      - "8101:80"
+      - "8201:443"
+    env_file:
+      - .env_wp
+      
+  DB_clevermovement:
+    container_name: clevermovement_mariadb
+    image: mariadb:latest
+    restart: unless-stopped
+    volumes:
+      - /var/www/docker/clevermovement.co.uk/db/:/var/lib/mysql/
+    env_file:
+      - .env_db
