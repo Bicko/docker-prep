@@ -63,6 +63,12 @@
         state: present
         key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC8IDne4wjh7kTQLIf2bksLdRZmj57Y2G0SL9psblJPZ test@tj65'
         
+    - name: Set Mike's authorized_key for nhsw7
+      authorized_key:
+        user: mike
+        state: present
+        key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMU2ZpK8BvrrhyVew8Y0nakgtM3nW9zV2aVdrRDajw/6 mike@nhsw7'        
+        
     - name: Set hostname
       hostname:
         name: docker
