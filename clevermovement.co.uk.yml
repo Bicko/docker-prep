@@ -1,10 +1,12 @@
-version: '3'
+version: '3.8'
 services:
+
   WP_clevermovement:
-    container_name: clevermovement_wordpress
+    container_name: clevermovement_WP
     image: wordpress:php7.4-apache
     depends_on:
       - DB_clevermovement
+      - Mail_clevermovement
     restart: unless-stopped
     volumes:
       - /var/www/docker/clevermovement.co.uk/html/:/var/www/html/
@@ -12,14 +14,55 @@ services:
     ports:
       - "8101:80"
       - "8201:443"
-    env_file:
-      - .env_wp
-      
+    environment:
+      WORDPRESS_DB_NAME: 
+      WORDPRESS_DB_USER: 
+      WORDPRESS_DB_PASSWORD: 
+      WORDPRESS_DB_HOST: 
+    networks:
+      database:
+      mail:
+
   DB_clevermovement:
-    container_name: clevermovement_mariadb
+    container_name: clevermovement_DB
     image: mariadb:latest
     restart: unless-stopped
     volumes:
       - /var/www/docker/clevermovement.co.uk/db/:/var/lib/mysql/
-    env_file:
-      - .env_db
+    environment:
+      MYSQL_DATABASE: 
+      MYSQL_USER: 
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 
+    networks:
+      database:
+
+  Mail_clevermovement:
+    container_name: clevermovement_Mail
+    image: tozd/postfix:alpine-38
+    restart: unless-stopped
+    expose:
+      - "25/tcp"
+      - "465/tcp"
+      - "587/tcp"
+    environment:
+      MAILNAME: clevermovement.co.uk
+      MY_NETWORKS: 127.0.0.0/8 172.20.0.0/16 # forced the mail subnet to be 172.20.0.0/16 in the networks section below
+      MY_DESTINATION: localhost.localdomain, localhost
+      ROOT_ALIAS: admin@clevermovement.co.uk
+    volumes:
+      - /var/www/docker/clevermovement.co.uk/mail/volumes/spool:/var/spool/postfix
+      - /var/www/docker/clevermovement.co.uk/mail/volumes/log:/var/log/postfix
+    networks:
+      mail:
+
+networks:
+  mail:
+    name: cm_mail
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+  database:
+    name: cm_database
+    driver: bridge
