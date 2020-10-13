@@ -13,6 +13,10 @@
       group:
         name: docker
         state: present
+    - name: Create netdev group... Linode doesn't have one?
+      group:
+        name: netdev
+        state: present
         
     - name: Create a user account for Mike
       user:
