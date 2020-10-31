@@ -192,8 +192,10 @@
         
     - name: Firewall stuff
       ufw:
-        state: disabled
-        policy: allow
+        state: enabled
+        policy: deny
+        logging: on
+        
       
 
     - name: apt-get upgrade
