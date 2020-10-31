@@ -192,7 +192,7 @@
         
     - name: Firewall stuff
       ufw:
-        state: enabled
+        state: disabled
         policy: allow
       
 
