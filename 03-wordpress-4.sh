@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Running as root?
 if [ "$(id -u)" != "0" ] ; then
   echo "Please run this as root." 1>&2
   exit 1
