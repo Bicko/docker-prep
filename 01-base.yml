@@ -191,12 +191,12 @@
         mode: '0755'
         
     - name: Firewall stuff
-      ufw:
-        state: enabled
-        policy: deny
-        logging: on
-        
-      
+      command: "ufw {{ item }}"
+      with_items:
+        - default deny incoming
+        - default allow outgoing
+        - allow 7056/tcp
+        - --force enable
 
     - name: apt-get upgrade
       apt:
