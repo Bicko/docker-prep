@@ -8,10 +8,18 @@
       apt:
         name: nginx
         state: latest
+        
+    - name: Replace existing Nginx default config file
+      get_url:
+        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/default.nginx
+        dest: /etc/nginx/sites-available/default
+        mode: '0644'
+        owner: root
+        group: root
      
-    - name: Unlink default Nginx conf
+    - name: Ensure default Nginx conf is linked
       file:
-        state: absent
+        state: present
         path: /etc/nginx/sites-enabled/default
 
     - name: Create Nginx logs subdirectory
@@ -19,8 +27,16 @@
         path: /var/www/reverse-proxy
         state: directory
         mode: '0755'
-        owner: root
-        group: root
+        owner: mike
+        group: mandj
+        
+    - name: Create subdirectory for default Nginx logs
+      file:
+        path: /var/www/reverse-proxy/default
+        state: directory
+        mode: '0755'
+        owner: mike
+        group: mandj
 
     - name: Create subdirectory for containers
       file:
