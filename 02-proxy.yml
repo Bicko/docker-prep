@@ -19,8 +19,12 @@
      
     - name: Ensure default Nginx conf is linked
       file:
-        state: present
-        path: /etc/nginx/sites-enabled/default
+        src: /etc/nginx/sites-available/default
+        dest: /etc/nginx/sites-enabled/default
+        owner: root
+        group: root
+        state: link
+        
 
     - name: Create Nginx logs subdirectory
       file:
