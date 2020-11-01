@@ -28,13 +28,13 @@
         - /var/www/docker/{{ domain_name }}/logs
         - /var/www/docker/{{ domain_name }}/db
         
-    - name: Get docker-compose.yml for {{ domain_name }}
-      get_url:
-        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.yml
-        dest: /var/www/docker/{{ domain_name }}/docker-compose.yml
-        mode: '0644'
-        owner: mike
-        group: mandj
+#    - name: Get docker-compose.yml for {{ domain_name }}
+#      get_url:
+#        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.yml
+#        dest: /var/www/docker/{{ domain_name }}/docker-compose.yml
+#        mode: '0644'
+#        owner: mike
+#        group: mandj
 
     - name: Create sites-enabled symlink
       file:
