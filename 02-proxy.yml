@@ -79,3 +79,9 @@
         name: nginx
         state: reloaded
         enabled: yes
+
+    - name: Allowing port 80 and 443 through Firewall
+      command: "ufw {{ item }}"
+      with_items:
+        - allow 80/tcp
+        - allow 443/tcp
