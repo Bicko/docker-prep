@@ -5,7 +5,7 @@ server {
         access_log /var/www/reverse-proxy/littlebigdogbeer.co.uk/access.log;
         error_log  /var/www/reverse-proxy/littlebigdogbeer.co.uk/error.log;
 
-        server_name littlebigdogbeer.co.uk www.littlebigdogbeer.co.uk;
+        server_name littlebigdogbeer.co.uk www.littlebigdogbeer.co.uk littlebigdogbeer.com www.littlebigdogbeer.com;
         location / {
                 proxy_pass http://localhost:8104;
                 proxy_set_header Accept-Encoding "";
