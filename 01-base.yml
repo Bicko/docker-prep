@@ -164,13 +164,7 @@
     - name: Create tmux config file
       copy:
         dest: /home/mike/.tmux.conf
-        content: |
-          set -g status-bg blue
-          set -g status-fg white
-          set -g message-bg yellow
-          set -g message-fg black
-          set -g pane-border-fg blue
-          set -g pane-active-border-fg red
+        content: "set -g status-bg blue\nset -g status-fg white\nset -g message-bg yellow\nset -g message-fg black\nset -g pane-border-fg blue\nset -g pane-active-border-fg red\n"
         backup: yes
         mode: '0644'
         owner: mike
