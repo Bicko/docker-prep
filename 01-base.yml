@@ -152,6 +152,14 @@
         mode: '0755'
         owner: mike
         group: mandj
+        
+    - name: Create backups subdirectory
+      file:
+        path: /home/mike/backups
+        state: directory
+        mode: '0755'
+        owner: mike
+        group: mandj
 
     - name: Download reboot check script
       get_url:
