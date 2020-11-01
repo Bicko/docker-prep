@@ -193,6 +193,7 @@
     - name: Firewall stuff
       command: "ufw {{ item }}"
       with_items:
+        - --force reset
         - default deny incoming
         - default allow outgoing
         - allow 7056/tcp
