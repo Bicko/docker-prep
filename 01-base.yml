@@ -160,11 +160,13 @@
         mode: '0755'
         owner: mike
         group: mandj
-        
+
     - name: Create tmux config file
       file:
         path: /home/mike/.tmux.conf
         state: touch
+        
+    - name: Put config statements into tmux config file
       lineinfile:
         path: /home/mike/.tmux.conf
         line: set -g status-bg blue
