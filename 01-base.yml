@@ -174,9 +174,6 @@
           set -g pane-border-fg blue
           set -g pane-active-border-fg red
         backup: yes
-        mode: '0644'
-        owner: mike
-        group: mandj
         
     - name: Add Docker’s official GPG key
       apt_key:
