@@ -5,9 +5,9 @@ server {
         access_log /var/www/reverse-proxy/littlebigdogbeer.co.uk/access.log;
         error_log  /var/www/reverse-proxy/littlebigdogbeer.co.uk/error.log;
 
-        server_name clevermovement.co.uk www.clevermovement.co.uk;
+        server_name littlebigdogbeer.co.uk www.littlebigdogbeer.co.uk;
         location / {
-                proxy_pass http://localhost:8102;
+                proxy_pass http://localhost:8104;
                 proxy_set_header Accept-Encoding "";
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
