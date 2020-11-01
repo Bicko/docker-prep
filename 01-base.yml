@@ -2,6 +2,8 @@
 - hosts: localhost
   connection: local
   become: yes
+  vars:
+    host_name: dockersites
   
   tasks:
     - name: Create group mandj
@@ -75,12 +77,12 @@
         
     - name: Set hostname
       hostname:
-        name: docker
+        name: {{ host_name }}
     - name: Ensure hosts file has correct hostname too
       lineinfile:
         path: /etc/hosts
         regexp: '^127\.0\.1\.1'
-        line: 127.0.1.1       docker
+        line: 127.0.1.1       {{ host_name }}
      
     - name: "Change SSH port number"
       lineinfile:
