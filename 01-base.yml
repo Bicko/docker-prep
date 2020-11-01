@@ -77,12 +77,12 @@
         
     - name: Set hostname
       hostname:
-        name: {{ host_name }}
+        name: "{{ host_name }}"
     - name: Ensure hosts file has correct hostname too
       lineinfile:
         path: /etc/hosts
         regexp: '^127\.0\.1\.1'
-        line: 127.0.1.1       {{ host_name }}
+        line: 127.0.1.1       "{{ host_name }}"
      
     - name: "Change SSH port number"
       lineinfile:
