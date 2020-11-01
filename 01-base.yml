@@ -190,7 +190,7 @@
         dest: /usr/local/bin/docker-compose
         mode: '0755'
         
-    - name: Firewall stuff
+    - name: Configure Firewall
       command: "ufw {{ item }}"
       with_items:
         - --force reset
