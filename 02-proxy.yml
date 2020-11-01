@@ -49,6 +49,12 @@
         mode: '0755'
         owner: mike
         group: mandj
+        
+    - name: remove default html file
+      ignore_errors: yes
+      file:
+        path: /var/www/htm/index.nginx-debian.html
+        state: absent
 
     - name: Put default index.html in place
       get_url:
