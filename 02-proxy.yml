@@ -53,7 +53,7 @@
     - name: remove default html file
       ignore_errors: yes
       file:
-        path: /var/www/htm/index.nginx-debian.html
+        path: /var/www/html/index.nginx-debian.html
         state: absent
 
     - name: Put default index.html in place
