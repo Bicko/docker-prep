@@ -162,16 +162,19 @@
         group: mandj
 
     - name: Create tmux config file
-      file:
-        path: /home/mike/.tmux.conf
-        state: touch
+      blockinfile:
+        dest: /home/mike/.tmux.conf
+        block: |
+          set -g status-bg blue
+          set -g status-fg white
+          
+          set -g message-bg yellow
+          set -g message-fg black
+          
+          set -g pane-border-fg blue
+          set -g pane-active-border-fg red
+        backup: yes
         
-    - name: Put config statements into tmux config file
-      lineinfile:
-        path: /home/mike/.tmux.conf
-        line: set -g status-bg blue
-        
-      
     - name: Add Docker’s official GPG key
       apt_key:
         id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
@@ -206,7 +209,7 @@
     - name: Configure Firewall
       command: "ufw {{ item }}"
       with_items:
-        - --force reset
+        #- --force reset
         - default deny incoming
         - default allow outgoing
         - allow 7056/tcp
