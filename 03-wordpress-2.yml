@@ -24,7 +24,6 @@
       loop:
         - /var/www/reverse-proxy/{{ domain_name }}
         - /var/www/docker/{{ domain_name }}
-        - /var/www/docker/{{ domain_name }}/html
         - /var/www/docker/{{ domain_name }}/logs
         - /var/www/docker/{{ domain_name }}/db
 
