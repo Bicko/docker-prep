@@ -24,17 +24,24 @@
       loop:
         - /var/www/reverse-proxy/{{ domain_name }}
         - /var/www/docker/{{ domain_name }}
-        - /var/www/docker/{{ domain_name }}/html
         - /var/www/docker/{{ domain_name }}/logs
         - /var/www/docker/{{ domain_name }}/db
-                
-    - name: Get docker-compose.yml for {{ domain_name }}
-      get_url:
-        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.yml
-        dest: /var/www/docker/{{ domain_name }}/docker-compose.yml
-        mode: '0644'
-        owner: mike
-        group: mandj
+
+    - name: Create html directory for {{ domain_name }} with different ownership
+      file:
+        path: "/var/www/docker/{{ domain_name }}/html"
+        state: directory
+        mode: '0755'
+        owner: www-data
+        group: www-data
+        
+#    - name: Get docker-compose.yml for {{ domain_name }}
+#      get_url:
+#        url: https://raw.githubusercontent.com/Bicko/docker-prep/master/{{ domain_name }}.yml
+#        dest: /var/www/docker/{{ domain_name }}/docker-compose.yml
+#        mode: '0644'
+#        owner: mike
+#        group: mandj
 
     - name: Create sites-enabled symlink
       file:
