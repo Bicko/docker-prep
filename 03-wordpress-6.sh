@@ -5,7 +5,7 @@ if [ "$(id -u)" != "0" ] ; then
   exit 1
 fi
 
-#Install Ansible, if not already installed
+#Install Ansible, if not already installed (likely it is)
 test ! -f /usr/local/bin/ansible && apt -y install python3-pip && pip3 install ansible
 
 #Install git, if not already installed
