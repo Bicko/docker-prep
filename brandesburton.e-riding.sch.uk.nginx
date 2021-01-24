@@ -9,7 +9,7 @@ server {
 
         server_name brandesburton.e-riding.sch.uk www.brandesburton.e-riding.sch.uk;
         location / {
-                proxy_pass http://localhost:8101;
+                proxy_pass http://localhost:8103;
                 proxy_set_header Accept-Encoding "";
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
