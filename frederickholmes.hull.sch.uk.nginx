@@ -7,7 +7,7 @@ server {
         access_log /var/www/reverse-proxy/frederickholmes.hull.sch.uk/access.log;
         error_log  /var/www/reverse-proxy/frederickholmes.hull.sch.uk/error.log;
 
-        server_name frederickholmes.hull.sch.uk www.frederickholmes.hull.sch.uk;
+        server_name frederickholmes.hull.sch.uk www.frederickholmes.hull.sch.uk blog.frederickholmes.hull.sch.uk;
         location / {
                 proxy_pass http://localhost:8105;
                 proxy_set_header Accept-Encoding "";
@@ -17,4 +17,3 @@ server {
                 proxy_set_header X-Forwarded-Proto $scheme;
         }
 }
-
