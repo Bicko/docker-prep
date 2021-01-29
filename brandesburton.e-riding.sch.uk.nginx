@@ -7,7 +7,10 @@ server {
         access_log /var/www/reverse-proxy/brandesburton.e-riding.sch.uk/access.log;
         error_log  /var/www/reverse-proxy/brandesburton.e-riding.sch.uk/error.log;
 
-        server_name brandesburton.e-riding.sch.uk www.brandesburton.e-riding.sch.uk;
+        server_name brandesburton.e-riding.sch.uk class1-blog.brandesburton.e-riding.sch.uk class2-blog.brandesburton.e-riding.sch.uk class3-blog.brandesburto
+n.e-riding.sch.uk class4-blog.brandesburton.e-riding.sch.uk class5-blog.brandesburton.e-riding.sch.uk fs-blog.brandesburton.e-riding.sch.uk governor-blog.bran
+desburton.e-riding.sch.uk home-learning.brandesburton.e-riding.sch.uk pe-blog.brandesburton.e-riding.sch.uk www.brandesburton.e-riding.sch.uk;
+        
         location / {
                 proxy_pass http://localhost:8103;
                 proxy_set_header Accept-Encoding "";
