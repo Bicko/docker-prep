@@ -6,6 +6,6 @@ Run the following:
 curl -sL https://raw.githubusercontent.com/Bicko/docker-prep/master/01-base.sh | bash
 
 Reboot the vps and run the remaining ymls as a 'normal' user. For example:
-curl -sL https://raw.githubusercontent.com/Bicko/docker-prep/master/02-proxy.sh | sudo bash
+curl -sL https://raw.githubusercontent.com/Bicko/docker-prep/master/02-proxyxyz.sh | sudo bash
 
 .. 
