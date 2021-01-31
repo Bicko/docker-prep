@@ -138,6 +138,7 @@
         - gnupg-agent
         - software-properties-common
         - ufw
+        - xfsprogs
         
     - name: Create scripts subdirectory
       file:
