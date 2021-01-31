@@ -139,6 +139,9 @@
         - software-properties-common
         - ufw
         - xfsprogs
+        - liblzo2-2
+        - snapd
+        - squashfs-tools
         
     - name: Create scripts subdirectory
       file:
