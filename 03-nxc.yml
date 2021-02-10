@@ -3,7 +3,7 @@
   connection: local
   become: yes
   vars:
-    domain_name: strangerthandata.com
+    domain_name: nxtc1.strangerthandata.com
   
   tasks:
     - name: Fetch Nginx reverse proxy config file for {{ domain_name }}
