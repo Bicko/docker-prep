@@ -78,14 +78,7 @@
         state: directory
         mode: '0755'
         owner: mike
-        group: mandj
-        
-    - name: Add client_max_body_size 2M; to /etc/nginx/nginx.conf straight after the "http {" line
-      lineinfile:
-        path: /etc/nginx/nginx.conf
-        insertafter: 'http *{ *$'
-        line: 'client_max_body_size 2M;'
-        state: present        
+        group: mandj       
 
     - name: Start / Reload Nginx
       service:
