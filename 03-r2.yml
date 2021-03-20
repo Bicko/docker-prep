@@ -25,7 +25,6 @@
         - /var/www/reverse-proxy/{{ domain_name }}
         - /var/www/docker/{{ domain_name }}
         - /var/www/docker/{{ domain_name }}/logs
-        - /var/www/docker/{{ domain_name }}/db
 
     - name: Create html directory for {{ domain_name }} with different ownership
       file:
