@@ -10,7 +10,7 @@ server {
         server_name optimist1.strangerthandata.com;
         
         location / {
-                proxy_pass http://localhost:8106;
+                proxy_pass http://localhost:8107;
                 proxy_set_header Accept-Encoding "";
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
